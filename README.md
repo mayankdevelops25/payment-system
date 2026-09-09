@@ -1,10 +1,5 @@
 <a id="readme-top"></a>
 
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
 <br />
 <div align="center">
   <h3 align="center">💸💸💸</h3>
@@ -12,15 +7,6 @@
 
   <p align="center">
     Production-grade P2P payment infrastructure with distributed fraud detection and event-driven architecture
-    <br />
-    <a href="https://github.com/abubakkar-siddhiq/payment-system"><strong>Explore the code »</strong></a>
-    <br />
-    <br />
-    <a href="https://medium.com/@Abubakkar-Siddhiq/how-i-built-a-distributed-payment-system-from-scratch-and-what-it-taught-me-9086c00ebca4">Read the Build Journal</a>
-    &middot;
-    <a href="https://github.com/abubakkar-siddhiq/payment-system/issues">Report Bug</a>
-    &middot;
-    <a href="https://github.com/abubakkar-siddhiq/payment-system/issues">Request Feature</a>
   </p>
 </div>
 
@@ -369,19 +355,6 @@ PUT /api/v1/fraud/alerts/{id}/reject  → Confirmed fraud — keep frozen
 - [ ] Kubernetes orchestration
 - [ ] CI/CD pipeline
 - [ ] Load testing with k6
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
----
-
-<!-- CONTACT -->
-## Contact
-
-Abubakkar Siddhiq - [LinkedIn](https://linkedin.com/in/abubakkar-siddhiq)
-
-Project Link: [https://github.com/abubakkar-siddhiq/payment-system](https://github.com/abubakkar-siddhiq/payment-system)
-
-Build Journal: [medium blog](https://medium.com/@Abubakkar-Siddhiq/how-i-built-a-distributed-payment-system-from-scratch-and-what-it-taught-me-9086c00ebca4)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
