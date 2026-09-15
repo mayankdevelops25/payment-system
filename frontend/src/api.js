@@ -1,4 +1,8 @@
-const BASE_URL = 'http://localhost:8090/api/v1'
+// Relative base URL: the Vite dev server proxies /api to the API gateway
+// (http://localhost:8090, see vite.config.js) so the app works both in local
+// dev and when served through a proxy (e.g. the sandbox preview). In a real
+// deployment the frontend is served behind the same-origin gateway.
+const BASE_URL = '/api/v1'
 
 function authHeaders(token) {
   return { Authorization: `Bearer ${token}` }
