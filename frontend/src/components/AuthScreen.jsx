@@ -16,13 +16,13 @@ import {
 const FEATURES = [
   {
     icon: ShieldIcon,
-    title: 'Fraud-safe by design',
-    sub: 'Every transfer passes a real-time rule engine before it settles.',
+    title: 'Automated fraud screening',
+    sub: 'Every transfer is published to an event-driven fraud detection service for review.',
   },
   {
     icon: SendIcon,
-    title: 'Instant P2P transfers',
-    sub: 'Money moves in milliseconds — and never twice (idempotent by default).',
+    title: 'Idempotent P2P transfers',
+    sub: 'Each transfer is deduplicated by an idempotency key, so retries never double-charge.',
   },
   {
     icon: WalletIcon,
@@ -32,9 +32,9 @@ const FEATURES = [
 ]
 
 const PROOF_CHIPS = [
-  { label: 'Fraud blocked', value: '$2,450.00' },
-  { label: 'Median settlement', value: '12 ms' },
-  { label: 'Uptime', value: '99.99%' },
+  { label: 'Transfers', value: 'Idempotent' },
+  { label: 'Auth', value: 'JWT + rate-limited' },
+  { label: 'Fraud checks', value: 'Event-driven' },
 ]
 
 export default function AuthScreen({ mode, onSubmit, onSwitchMode }) {

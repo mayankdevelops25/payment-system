@@ -464,7 +464,7 @@ export default function Dashboard({ token, onLogout, toast }) {
 
         <p className="dash-footnote">
           <ShieldIcon size={13} />
-          Every request is idempotent and screened by the fraud engine in real time.
+          Every request is idempotent, and transfers are automatically sent for fraud review.
         </p>
       </main>
     </div>
