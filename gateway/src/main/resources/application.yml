@@ -77,7 +77,7 @@ spring:
                 allowCredentials: true
 
 jwt:
-  secret: 2Qj3ZpP1QqWn5J6c6h1s7Q9sQ3k8Xb9mF4yJc0rP2tU=
+  secret: ${JWT_SECRET}
 
 api_prefix: "/api/v1"
 
