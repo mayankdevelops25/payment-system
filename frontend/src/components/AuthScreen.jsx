@@ -83,7 +83,7 @@ export default function AuthScreen({ mode, onSubmit, onSwitchMode }) {
           </h1>
           <p className="auth-sub">
             Instant peer-to-peer transfers, one-tap deposits and a fraud engine
-            that never blinks — wrapped in an interface that stays out of your way.
+            that never blinks.
           </p>
         </div>
 

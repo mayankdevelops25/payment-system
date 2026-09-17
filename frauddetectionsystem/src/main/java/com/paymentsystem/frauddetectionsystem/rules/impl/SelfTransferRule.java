@@ -17,7 +17,7 @@ public class SelfTransferRule implements FraudRule {
                     .senderId(event.getSenderId())
                     .transactionId(event.getTransactionId())
                     .amount(event.getAmount())
-                    .reason("Suspicious Large Transaction")
+                    .reason("Self-transfer detected")
                     .riskLevel(RiskLevel.MEDIUM)
                     .detectedAt(event.getTimestamp())
                     .build());

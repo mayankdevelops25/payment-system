@@ -19,7 +19,7 @@ public class SystemManipulationRule implements FraudRule {
                     .senderId(event.getSenderId())
                     .transactionId(event.getTransactionId())
                     .amount(event.getAmount())
-                    .reason("Suspicious Large Transaction")
+                    .reason("Non-positive transaction amount (possible system manipulation)")
                     .riskLevel(RiskLevel.HIGH)
                     .detectedAt(event.getTimestamp())
                     .build());

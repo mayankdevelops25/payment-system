@@ -19,7 +19,7 @@ public class ThresholdGamingRule implements FraudRule {
                     .senderId(event.getSenderId())
                     .transactionId(event.getTransactionId())
                     .amount(event.getAmount())
-                    .reason("Suspicious Large Transaction")
+                    .reason("Amount appears designed to evade a reporting threshold")
                     .riskLevel(RiskLevel.HIGH)
                     .detectedAt(event.getTimestamp())
                     .build());
