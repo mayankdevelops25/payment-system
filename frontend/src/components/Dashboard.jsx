@@ -38,6 +38,19 @@ export default function Dashboard({ token, onLogout, toast }) {
   const [copied, setCopied] = useState(false)
   const copiedTimer = useRef(0)
 
+  const [history, setHistory] = useState([])
+  const [historyError, setHistoryError] = useState('')
+
+  const loadHistory = async () => {
+    try {
+      const data = await api.getTransactionHistory(token)
+      setHistory(data)
+      setHistoryError('')
+    } catch (err) {
+      setHistoryError(err.message || 'Could not load transaction history')
+    }
+  }
+
   const loadAccount = async () => {
     // Account creation happens asynchronously (via a Kafka event) right after
     // register/login, so it may not exist yet on the very first fetch.
@@ -70,6 +83,7 @@ export default function Dashboard({ token, onLogout, toast }) {
     setLoading(true)
     ;(async () => {
       await loadAccount()
+      await loadHistory()
       if (!cancelled) setLoading(false)
     })()
     return () => {
@@ -88,6 +102,7 @@ export default function Dashboard({ token, onLogout, toast }) {
       setAccount(updated)
       setDepositAmount('')
       toast(`Deposited ${formatMoney(Number(depositAmount), account.currency)} successfully.`, 'success')
+      await loadHistory()
     } catch (err) {
       toast(err.message || 'Deposit failed', 'error')
     } finally {
@@ -105,6 +120,7 @@ export default function Dashboard({ token, onLogout, toast }) {
       setPayAmount('')
       const updated = await api.getMe(token)
       setAccount(updated)
+      await loadHistory()
     } catch (err) {
       toast(err.message || 'Payment failed', 'error')
     } finally {
@@ -460,6 +476,45 @@ export default function Dashboard({ token, onLogout, toast }) {
               )}
             </button>
           </form>
+        </div>
+
+        <div className="panel">
+          <div className="panel-header">
+            <h3>Recent transactions</h3>
+          </div>
+          {historyError ? (
+            <p className="error-text">{historyError}</p>
+          ) : history.length === 0 ? (
+            <p className="muted">No transactions yet.</p>
+          ) : (
+            <ul className="history-list">
+              {history.map((tx) => {
+                const isSender = tx.senderAccountNumber === account.number
+                const counterparty = isSender ? tx.receiverAccountNumber : tx.senderAccountNumber
+                return (
+                  <li key={tx.id} className="history-row">
+                    <div className="history-row-main">
+                      <span className={`history-direction ${isSender ? 'out' : 'in'}`}>
+                        {isSender ? 'Sent to' : 'Received from'} {counterparty}
+                      </span>
+                      <span className="history-time">
+                        {new Date(tx.timestamp).toLocaleString()}
+                      </span>
+                    </div>
+                    <div className="history-row-amount">
+                      <strong className={isSender ? 'out' : 'in'}>
+                        {isSender ? '-' : '+'}
+                        {formatMoney(tx.amount, account.currency)}
+                      </strong>
+                      <span className={`status-badge status-${tx.status?.toLowerCase()}`}>
+                        {tx.status}
+                      </span>
+                    </div>
+                  </li>
+                )
+              })}
+            </ul>
+          )}
         </div>
 
         <p className="dash-footnote">

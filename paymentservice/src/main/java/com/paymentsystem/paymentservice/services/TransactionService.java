@@ -19,6 +19,7 @@ import tools.jackson.databind.ObjectMapper;
 import java.math.BigDecimal;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -169,5 +170,9 @@ public class TransactionService {
         reversal.setCurrency(original.getCurrency());
 
         transactionRepository.save(reversal);
+    }
+    
+    public List<Transaction> getHistory(String userId) {
+        return transactionRepository.findByAccountId(UUID.fromString(userId));
     }
 }

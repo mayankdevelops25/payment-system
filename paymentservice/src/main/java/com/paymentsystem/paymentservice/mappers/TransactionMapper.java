@@ -18,6 +18,8 @@ public interface TransactionMapper {
 
     @Mapping(target = "sender", source = "sender", qualifiedByName = "accountUUID")
     @Mapping(target = "receiver", source = "receiver", qualifiedByName = "accountUUID")
+    @Mapping(target = "senderAccountNumber", source = "sender.number")
+    @Mapping(target = "receiverAccountNumber", source = "receiver.number")
     TransactionResponse toTransactionResponse(Transaction transaction);
 
     @Named("accountUUID")

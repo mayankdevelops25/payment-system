@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/payments")
@@ -20,6 +21,17 @@ public class TransactionController {
 
     private final TransactionService transactionService;
     private final TransactionMapper transactionMapper;
+
+    @GetMapping("/history")
+    public ResponseEntity<List<TransactionResponse>> getHistory(
+            @RequestHeader("X-User-Id") String userId
+    ) {
+        List<Transaction> transactions = transactionService.getHistory(userId);
+        List<TransactionResponse> response = transactions.stream()
+                .map(transactionMapper::toTransactionResponse)
+                .toList();
+        return ResponseEntity.ok(response);
+    }
 
     @PostMapping
     public ResponseEntity<TransactionResponse> createPayment(

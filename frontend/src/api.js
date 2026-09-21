@@ -79,3 +79,10 @@ export async function sendPayment(token, sender, receiver, amount) {
   }
   return data
 }
+
+export async function getTransactionHistory(token) {
+  const res = await fetch(`${BASE_URL}/payments/history`, {
+    headers: authHeaders(token),
+  })
+  return parseOrThrow(res, 'Could not load transaction history')
+}

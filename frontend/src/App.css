@@ -781,6 +781,119 @@ code {
   padding: 24px;
 }
 
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.panel-header h3 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.error-text {
+  color: var(--red);
+  font-size: 13px;
+}
+
+.history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.history-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 2px solid var(--line-soft);
+}
+
+.history-row:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.history-row-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.history-direction {
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history-time {
+  font-size: 11px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+}
+
+.history-row-amount {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.history-row-amount strong {
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+.history-row-amount strong.in {
+  color: var(--green);
+}
+
+.history-row-amount strong.out {
+  color: var(--ink);
+}
+
+.status-badge {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border: 1.5px solid var(--ink);
+}
+
+.status-success {
+  background: var(--green);
+  color: var(--white);
+  border-color: var(--green);
+}
+
+.status-failed {
+  background: var(--red-soft);
+  color: var(--red);
+  border-color: var(--red);
+}
+
+.status-reversed {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
 .stats-panel {
   display: flex;
   flex-direction: column;
@@ -1343,6 +1456,10 @@ code {
     font-size: 22px;
   }
 
+  .panel {
+    padding: 18px;
+  }
+
   .toast-stack {
     left: 16px;
     right: 16px;
@@ -1351,6 +1468,27 @@ code {
 
   .account-mono {
     max-width: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .history-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .history-row-amount {
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .history-direction {
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 }
 

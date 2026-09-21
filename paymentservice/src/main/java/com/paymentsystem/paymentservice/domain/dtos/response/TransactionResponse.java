@@ -19,6 +19,8 @@ public class TransactionResponse {
     private UUID id;
     private UUID sender;
     private UUID receiver;
+    private String senderAccountNumber;
+    private String receiverAccountNumber;
     private BigDecimal amount;
 //    private Currency currency;
     private TransactionStatus status;
