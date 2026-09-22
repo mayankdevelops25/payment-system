@@ -4,6 +4,9 @@
 
 Production-grade P2P payment infrastructure with distributed fraud detection and event-driven architecture
 
+<img width="1759" height="1436" alt="image" src="https://github.com/user-attachments/assets/c6105066-b319-42fa-96bf-2f12084ad6ba" />
+
+
 ---
 
 **Table of Contents**
